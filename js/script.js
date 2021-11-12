@@ -2,6 +2,8 @@
 
 const containers = document.querySelectorAll('.js-buttons-container');
 
+const settingButtons = document.querySelectorAll('[data-setting-name]');
+
 const setDataAttribute = ({settingTarget}, params) => {
     const element = document.querySelector(settingTarget);
     for (const [key, value] of Object.entries(params)) {
@@ -13,6 +15,12 @@ const setClass = ({settingTarget}, params) => {
     const element = document.querySelector(settingTarget);
 
     for (const [key, value] of Object.entries(params)) {
+        const elements = Array.from(settingButtons)
+            .filter((element) => element.dataset['settingName'] === key)
+        // удалить классы, название которых совпадает со значением
+        // атрибута setting-value всех элементов с setting-name равным key
+        elements.forEach((item) => element.classList.remove(item.dataset.settingValue));
+
         element.classList.add(value);
     }
 };
