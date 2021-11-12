@@ -33,6 +33,13 @@ const setButtonActive = (params) => {
 
         // снимаем класс active с кнопки, которая ранее была активной
         activeButton.classList.remove('active');
+
+        // находим кнопку, которую устанавливаем для настройки
+        const setButton = Array.from(settingButtons)
+            .find((element) => element.dataset['settingName'] === key && element.dataset['settingValue'] === value);
+
+        // добавляем класс active с кнопки, которую устанавливаем
+        setButton.classList.add('active');
     }
 };
 
@@ -43,6 +50,8 @@ const applySetting = (setting, params) => {
     } else if (setting.settingType === 'attribute') {
         setDataAttribute(setting, params);
     }
+
+    setButtonActive(params);
   };
   
 const settingButtonClickHandler = (evt, setting) => {
