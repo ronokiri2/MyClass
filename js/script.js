@@ -13,7 +13,7 @@ const applySetting = (setting, params) => {
     if (setting.settingType === 'class') {
   
     } else if (setting.settingType === 'attribute') {
-  
+        setDataAttribute(setting, params);
     }
   };
   
