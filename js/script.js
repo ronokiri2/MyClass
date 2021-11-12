@@ -18,13 +18,25 @@ const setClass = ({settingTarget}, params) => {
         const elements = Array.from(settingButtons)
             .filter((element) => element.dataset['settingName'] === key)
         // удалить классы, название которых совпадает со значением
-        // атрибута setting-value всех элементов с setting-name равным key
+        // атрибута setting-value элементов с setting-name равным key
         elements.forEach((item) => element.classList.remove(item.dataset.settingValue));
 
         element.classList.add(value);
     }
 };
   
+const setButtonActive = (params) => {
+    for (const [key, value] of Object.entries(params)) {
+        // находим активную кнопку для настройки
+        const activeButton = Array.from(settingButtons)
+            .find((element) => element.dataset['settingName'] === key && element.classList.contains('active'));
+
+        // снимаем класс active с кнопки, которая ранее была активной
+        activeButton.classList.remove('active');
+    }
+};
+
+
 const applySetting = (setting, params) => {
     if (setting.settingType === 'class') {
         setClass(setting, params);
