@@ -2,6 +2,14 @@
 
 const containers = document.querySelectorAll('.js-buttons-container');
 
+const applySetting = (setting, params) => {
+    if (setting.settingType === 'class') {
+  
+    } else if (setting.settingType === 'attribute') {
+  
+    }
+  };
+  
 const settingButtonClickHandler = (evt, setting) => {
   const button = evt.target.closest('button');
 
@@ -14,7 +22,8 @@ const settingButtonClickHandler = (evt, setting) => {
   const settingName = button.dataset.settingName;
   const settingValue = button.dataset.settingValue;
   params[settingName] = settingValue;
-
+  
+  applySetting(setting, params);
 };
 
 const init = () => {
