@@ -8,10 +8,18 @@ const setDataAttribute = ({settingTarget}, params) => {
       element.dataset[key] = value;
     }
   };
+
+const setClass = ({settingTarget}, params) => {
+    const element = document.querySelector(settingTarget);
+
+    for (const [key, value] of Object.entries(params)) {
+        element.classList.add(value);
+    }
+};
   
 const applySetting = (setting, params) => {
     if (setting.settingType === 'class') {
-  
+        setClass(setting, params);
     } else if (setting.settingType === 'attribute') {
         setDataAttribute(setting, params);
     }
@@ -29,7 +37,7 @@ const settingButtonClickHandler = (evt, setting) => {
   const settingName = button.dataset.settingName;
   const settingValue = button.dataset.settingValue;
   params[settingName] = settingValue;
-
+  
   applySetting(setting, params);
 };
 
