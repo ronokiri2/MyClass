@@ -1,5 +1,10 @@
 'use strict';
 
+const SettingType = {
+    ATTRIBUTE: 'attribute',
+    CLASS: 'class',
+};
+
 const containers = document.querySelectorAll('.js-buttons-container');
 
 const settingButtons = document.querySelectorAll('[data-setting-name]');
@@ -31,12 +36,12 @@ const setButtonActive = (params) => {
         const activeButton = Array.from(settingButtons)
             .find((element) => element.dataset['settingName'] === key && element.classList.contains('active'));
 
-        // снимаем класс active с кнопки, которая ранее была активной
-        activeButton.classList.remove('active');
-
         // находим кнопку, которую устанавливаем для настройки
         const setButton = Array.from(settingButtons)
             .find((element) => element.dataset['settingName'] === key && element.dataset['settingValue'] === value);
+
+        // снимаем класс active с кнопки, которая ранее была активной
+        activeButton.classList.remove('active');
 
         // добавляем класс active с кнопки, которую устанавливаем
         setButton.classList.add('active');
@@ -45,9 +50,9 @@ const setButtonActive = (params) => {
 
 
 const applySetting = (setting, params) => {
-    if (setting.settingType === 'class') {
+    if (setting.settingType === SettingType.CLASS) {
         setClass(setting, params);
-    } else if (setting.settingType === 'attribute') {
+    } else if (setting.settingType === SettingType.ATTRIBUTE) {
         setDataAttribute(setting, params);
     }
 
@@ -77,7 +82,7 @@ const init = () => {
         container.addEventListener('click', (evt) => {
           settingButtonClickHandler(evt, setting);
         });
-      });
+    });
 };
 
 init();
