@@ -9,7 +9,14 @@ const settingButtonClickHandler = (evt, setting) => {
     return;
   }
 
+  const params = {};
+
+  const settingName = button.dataset.settingName;
+  const settingValue = button.dataset.settingValue;
+  params[settingName] = settingValue;
+
 };
+
 const init = () => {
     containers.forEach((container) => {
         const setting = container.dataset;
