@@ -1,5 +1,32 @@
 'use strict';
 
+const init = () => {
+
+};
+
+init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+'use strict';
+
 const buttonThemeLight = document.querySelector('.theme-button-light');
 const buttonThemeDark = document.querySelector('.theme-button-dark');
 const buttonThemeTexture = document.querySelector('.theme-button-texture');
@@ -51,3 +78,5 @@ const buttonThemeLightHandler = () => {
   };
   
   init();
+
+  */
